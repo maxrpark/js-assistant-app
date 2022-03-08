@@ -2,14 +2,14 @@ import renderList from './utils/renderList.js';
 import year from './utils/showYear.js';
 import showAlertMessage from './utils/showAlertMessage.js';
 
-// variables
+// Variables
 let taskID;
 const InputText = document.getElementById('input-text');
 const todoContainer = document.querySelector('.todo-container');
 export let isEditing = false;
 export let todoList = localStorage.getItem('JSTodoList');
 
-// listen event
+// Listen event
 const form = document.getElementById('form');
 const removeItems = document.getElementById('removeAll');
 const textValue = InputText;
@@ -18,7 +18,7 @@ let task = {
   value: '',
 };
 
-// create localStorage
+// Create localStorage
 if (todoList) {
   todoList = JSON.parse(localStorage.getItem('JSTodoList'));
   renderList();
@@ -56,7 +56,7 @@ form.addEventListener('submit', (e) => {
   renderList();
 });
 
-// remove items
+// Remove items
 
 removeItems.addEventListener('click', () => {
   todoContainer.innerHTML = '';
@@ -66,15 +66,15 @@ removeItems.addEventListener('click', () => {
   renderList(); // to clear local storage
 });
 
-// task options
+// Task options
 todoContainer.addEventListener('click', (e) => {
   let target = e.target;
   taskID = target.parentElement.parentElement.dataset.id;
-  // complete task
+  // Complete task
   if (target.classList.contains('completeItem')) {
     target.parentElement.parentElement.classList.toggle('isComplete');
   } else {
-    // edit task
+    // Edit task
     if (target.classList.contains('editItem')) {
       isEditing = true;
       todoList.map((task) => {
@@ -84,7 +84,7 @@ todoContainer.addEventListener('click', (e) => {
       });
       showAlertMessage('Editing', 'warning');
     }
-    // delete Task;
+    // Delete Task;
     else if (target.classList.contains('deleteItem')) {
       todoList = todoList.filter((task) => task.id !== taskID);
       renderList();
