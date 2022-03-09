@@ -29,7 +29,8 @@ if (todoList) {
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  if (textValue.value) {
+
+  if (textValue.value && textValue.value.trim() !== '') {
     if (isEditing) {
       todoList.map((task) => {
         if (task.id === taskID) {
@@ -52,6 +53,8 @@ form.addEventListener('submit', (e) => {
       };
       showAlertMessage('Task created', 'success');
     }
+  } else {
+    showAlertMessage('Please enter a task', 'danger');
   }
   renderList();
 });
@@ -69,6 +72,8 @@ removeItems.addEventListener('click', () => {
 // Task options
 todoContainer.addEventListener('click', (e) => {
   let target = e.target;
+  textValue.value = '';
+  isEditing = false;
   taskID = target.parentElement.parentElement.dataset.id;
   // Complete task
   if (target.classList.contains('completeItem')) {
