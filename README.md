@@ -15,4 +15,4 @@ I hope, I keep learning new onces in the future so this project expects more and
 ## Visit the website
 
 You can take a look at the website by clicking the next link
-[Assitant React App](https://js-assistant-app.netlify.app/).
+[Assitant JS App](https://js-assistant-app.netlify.app/).
