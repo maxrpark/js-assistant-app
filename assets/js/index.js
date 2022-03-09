@@ -13,13 +13,13 @@ const getData = async () => {
     const projects = data
       .map((project) => {
         const { name, url, gitUrl } = project;
-        let projectUrl = project.projectUrl;
+        let projectUrl;
 
-        // if (name === 'JS') {
-        //   projectUrl = '/todo.html';
-        // } else {
-        //   projectUrl = project.projectUrl;
-        // }
+        if (name === 'JS') {
+          projectUrl = '/todo.html';
+        } else {
+          projectUrl = project.projectUrl;
+        }
         return ` 
     <div class='card'>
      <h3 class='project-name'>${name}</h3>
